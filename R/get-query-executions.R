@@ -66,7 +66,7 @@ get_query_executions <- function(query_execution_ids,
 
   do.call(
     rbind.data.frame,
-    lapply(y$UnprocessedQueryExecutionIds, function(.x) {
+    lapply(res$UnprocessedQueryExecutionIds, function(.x) {
       data.frame(
         query_execution_id = .x$QueryExecutionId %||% NA_character_,
         error_code = .x$ErrorCode %||% NA_character_,

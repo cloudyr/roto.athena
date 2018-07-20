@@ -1,7 +1,9 @@
 ---
 output: rmarkdown::github_document
 ---
-
+```{r include=FALSE}
+knitr::opts_chunk$set(collapse = TRUE)
+```
 # aws.athena
 
 Access Amazon's AWS Athena API
@@ -24,6 +26,7 @@ The following functions are implemented:
 - `get_named_queries`:	Get Query Execution (batch/multiple)
 - `get_query_execution`:	Get Query Execution
 - `get_query_executions`:	Get Query Executions (batch/multiple)
+- `get_query_results`:	Get Query Results
 - `list_named_queries`:	List Named Queries
 - `list_query_executions`:	List Query Executions
 - `start_query_execution`:	Start Query Execution
@@ -43,9 +46,46 @@ options(width=120)
 
 ```{r message=FALSE, warning=FALSE, error=FALSE}
 library(aws.athena)
+library(tidyverse)
 
 # current verison
 packageVersion("aws.athena")
 
 ```
 
+```{r}
+# see recent queries
+x <- list_query_executions(profile = "personal")
+
+head(x$QueryExecutionIds)
+
+# get last 5 query executions
+y <- get_query_executions(x$QueryExecutionIds[1:5], profile = "personal")
+
+# only look at the ones that succeeded
+filter(y$QueryExecutions, state == "SUCCEEDED") 
+
+# fire off another one!
+start_query_execution(
+  query = "SELECT * FROM elb_logs LIMIT 100",
+  database = "sampledb",
+  output_location = "s3://aws-athena-query-results-redacted",
+  profile = "personal"
+) -> sqe
+
+```
+
+```{r echo=FALSE}
+Sys.sleep(2)
+```
+
+```{r}
+# see the status
+get_query_execution(sqe, profile = "personal") %>% 
+  glimpse()
+
+# get the results
+res <- get_query_results(sqe, profile = "personal")
+
+res
+```

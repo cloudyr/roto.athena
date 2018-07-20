@@ -19,11 +19,6 @@ get_query_execution <- function(query_execution_id,
                                 region_name = NULL,
                                 profile_name = NULL) {
 
-  if (length(query_execution_ids) > 50) {
-    message("Limiting query execution ids to 50")
-    query_execution_ids <- query_execution_ids[1:50]
-  }
-
   boto3$session$Session(
     aws_access_key_id = aws_access_key_id,
     aws_secret_access_key = aws_secret_access_key,
