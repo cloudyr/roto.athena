@@ -4,6 +4,14 @@
 #' `query_execution_id`. This request does not execute the query but returns
 #' results. Use [start_query_execution()] to run a query.
 #'
+#' While this function works, it may be faster to use the `awscli` utility
+#' to sync the cached CSV file and use your favorite R CSV reader. One
+#' advantage of this function is that it does know the column types (and
+#' sets them appropriately) but you also know what the column types are
+#' since you are querying a database you have access to. You should consider
+#' performing some real-world performance tests and choose the result set
+#' ingestion method that works best for you.
+#'
 #' @md
 #' @param query_execution_id unique ID of the query execution.
 #' @param chunk_size the AWS Athena API returns the result set in batches. Smaller

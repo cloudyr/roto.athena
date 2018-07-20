@@ -1,10 +1,12 @@
 ---
 output: rmarkdown::github_document
+editor_options: 
+  chunk_output_type: console
 ---
 ```{r include=FALSE}
 knitr::opts_chunk$set(collapse = TRUE)
 ```
-# roto.athena
+# aws.athena
 
 Access Amazon's AWS Athena API
 
@@ -31,11 +33,14 @@ The following functions are implemented:
 - `list_query_executions`:	List Query Executions
 - `start_query_execution`:	Start Query Execution
 - `stop_query_execution`:	Stop Query Execution
+- `collect_async`:  Collect Amazon Athena `dplyr` query results asynchronously
 
 ## Installation
 
 ```{r eval=FALSE}
 devtools::install_github("hrbrmstr/roto.athena")
+# OR
+devtools::install_git("git://gitlab.com/hrbrmstr/roto.athena")
 ```
 
 ```{r message=FALSE, warning=FALSE, error=FALSE, include=FALSE}
@@ -52,6 +57,8 @@ library(tidyverse)
 packageVersion("aws.athena")
 
 ```
+
+### Basic Usage
 
 ```{r}
 # see recent queries
@@ -88,4 +95,43 @@ get_query_execution(sqe, profile = "personal") %>%
 res <- get_query_results(sqe, profile = "personal")
 
 res
+```
+
+### Async `dplyr` calls
+
+```{r}
+library(odbc)
+library(DBI)
+
+DBI::dbConnect(
+  odbc::odbc(), 
+  driver = "/Library/simba/athenaodbc/lib/libathenaodbc_sbu.dylib", 
+  Schema = "sampledb",
+  AwsRegion = "us-east-1",
+  AwsProfile = "personal",
+  AuthenticationType = "IAM Profile",
+  S3OutputLocation = "s3://aws-athena-query-results-redacted"
+) -> con
+
+elb_logs <- tbl(con, "elb_logs")
+
+mutate(elb_logs, tsday = substr(timestamp, 1, 10)) %>% 
+  filter(tsday == "2014-09-29") %>%
+  select(requestip, requestprocessingtime) %>% 
+  collect_async(
+    database = "sampledb", 
+    output_location = "s3://aws-athena-query-results-redacted",
+    profile_name = "personal"
+  ) -> id
+```
+
+```{r echo=FALSE}
+Sys.sleep(2)
+```
+
+```{r}
+get_query_execution(id, profile = "personal") %>% 
+  glimpse()
+
+get_query_results(id, profile = "personal")
 ```
