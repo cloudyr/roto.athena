@@ -15,10 +15,12 @@ Encoding: UTF-8
 License: AGPL
 Suggests:
     testthat,
+    dbplyr,
     covr
 Depends:
     R (>= 3.2.0)
 Imports:
     reticulate,
+    stats,
     bit64
 RoxygenNote: 6.0.1.9000
