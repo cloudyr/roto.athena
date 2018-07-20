@@ -6,7 +6,7 @@ editor_options:
 ```{r include=FALSE}
 knitr::opts_chunk$set(collapse = TRUE)
 ```
-# aws.athena
+# roto.athena
 
 Access Amazon's AWS Athena API
 

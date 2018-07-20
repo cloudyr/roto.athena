@@ -1,5 +1,5 @@
 
-# aws.athena
+# roto.athena
 
 Access Amazon’s AWS Athena API
 
