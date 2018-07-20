@@ -13,6 +13,9 @@
 #' @param profile_name profile name
 #' @references <https://boto3.readthedocs.io/en/latest/reference/services/athena.html#Athena.Client.list_query_executions>
 #' @export
+#' @examples \dontrun{
+#' list_query_executions()
+#' }
 list_query_executions <- function(max_results = 50L,
                                   next_token = NULL,
                                   aws_access_key_id = NULL,

@@ -37,6 +37,16 @@ the \code{query} , an error is returned. \strong{This is auto-generated-for-you}
 \description{
 Create a named query.
 }
+\examples{
+\dontrun{
+create_named_query(
+  name = "elb100",
+  description = "100 rows from elb_logs",
+  query = "SELECT * FROM elb_logs LIMIT 100",
+  database = "sampledb"
+)
+}
+}
 \references{
 \url{https://boto3.readthedocs.io/en/latest/reference/services/athena.html#Athena.Client.create_named_query}
 }

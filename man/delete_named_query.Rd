@@ -24,6 +24,13 @@ delete_named_query(named_query_id, aws_access_key_id = NULL,
 \description{
 Delete a named query.
 }
+\examples{
+\dontrun{
+res <- list_named_queries()
+
+delete_named_query(res$NamedQueryIds[1])
+}
+}
 \references{
 \url{https://boto3.readthedocs.io/en/latest/reference/services/athena.html#Athena.Client.create_named_query}
 }

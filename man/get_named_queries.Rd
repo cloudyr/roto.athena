@@ -24,6 +24,13 @@ get_named_queries(named_query_ids, aws_access_key_id = NULL,
 \description{
 Returns information about a single query.
 }
+\examples{
+\dontrun{
+res <- list_named_queries()
+
+get_named_queries(res$NamedQueryIds)
+}
+}
 \references{
 \url{https://boto3.readthedocs.io/en/latest/reference/services/athena.html#Athena.Client.batch_get_named_query}
 }

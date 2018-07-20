@@ -28,6 +28,13 @@ get a list of query execution IDs, use \code{\link[=list_query_executions]{list_
 executions are different from named (saved) queries. Use
 \code{\link[=batch_get_named_queries]{batch_get_named_queries()}} to get details about named queries.
 }
+\examples{
+\dontrun{
+res <- list_query_executions()
+
+get_query_executions(res$QueryExecutionIds)
+}
+}
 \references{
 \url{https://boto3.readthedocs.io/en/latest/reference/services/athena.html#Athena.Client.batch_get_query_execution}
 }

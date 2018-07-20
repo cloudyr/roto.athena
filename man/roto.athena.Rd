@@ -4,12 +4,18 @@
 \name{roto.athena}
 \alias{roto.athena}
 \alias{roto.athena-package}
-\title{Access Amazon's AWS Athena API}
+\title{Perform and Manage 'Amazon' 'Athena' Queries}
 \description{
-Reticulated wrapper for the Python 'boto3' Athena client library.
+This is a 'reticulated' wrapper for the 'Python' 'boto3' 'AWS' 'Athena'
+client library \url{https://boto3.readthedocs.io/en/latest/reference/services/athena.html}.
+It requires 'Python' version 3.5+ and an 'AWS' account. Tools are also provided
+to execute 'dplyr' chains asynchronously.
 }
 \note{
-This package \strong{requires} Python >= 3.5 to be available and the \code{boto3} Python package.
+This package \strong{requires} Python >= 3.5 to be available and the
+\code{boto3} Python module. The package author highly recommends setting
+\code{RETICULATE_PYTHON=/usr/local/bin/python3} in your \code{~/.Renviron} file
+to ensure R + \code{reticulate} will use the proper python version.
 }
 \author{
 Bob Rudis (bob@rud.is)

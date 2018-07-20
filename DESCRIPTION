@@ -1,6 +1,6 @@
 Package: roto.athena
 Type: Package
-Title: Access Amazon's AWS Athena API
+Title: Perform and Manage 'Amazon' 'Athena' Queries 
 Version: 0.1.0
 Date: 2018-07-19
 Authors@R: c(
@@ -8,7 +8,10 @@ Authors@R: c(
            comment = c(ORCID = "0000-0001-5670-2640"))
   )
 Maintainer: Bob Rudis <bob@rud.is>
-Description: Reticulated wrapper for the Python 'boto3' Athena client library.
+Description: This is a 'reticulated' wrapper for the 'Python' 'boto3' 'AWS' 
+    'Athena' client library <https://boto3.readthedocs.io/en/latest/reference/services/athena.html>.
+    It requires 'Python' version 3.5+ and an 'AWS' account. Tools are also provided
+    to execute 'dplyr' chains asynchronously.
 URL: https://github.com/hrbrmstr/roto.athena
 BugReports: https://github.com/hrbrmstr/roto.athena/issues
 Encoding: UTF-8

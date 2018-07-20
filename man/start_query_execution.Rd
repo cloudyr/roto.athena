@@ -43,6 +43,16 @@ Default is \code{NULL} (no encryption)}
 \description{
 Runs (executes) the SQL query statements contained in the \code{query} string.
 }
+\examples{
+\dontrun{
+start_query_execution(
+  query = "SELECT * FROM elb_logs LIMIT 100",
+  database = "sampledb",
+  output_location = "s3://aws-athena-query-results-redacted",
+  profile = "personal"
+) -> sqe
+}
+}
 \references{
 \url{https://boto3.readthedocs.io/en/latest/reference/services/athena.html#Athena.Client.start_query_execution}
 }

@@ -11,6 +11,16 @@
 #' @param profile_name profile name
 #' @references <https://boto3.readthedocs.io/en/latest/reference/services/athena.html#Athena.Client.stop_query_execution>
 #' @export
+#' @examples \dontrun{
+#' start_query_execution(
+#'   query = "SELECT * FROM elb_logs LIMIT 100",
+#'   database = "sampledb",
+#'   output_location = "s3://aws-athena-query-results-redacted",
+#'   profile = "personal"
+#' ) -> sqe
+#'
+#' stop_query_execution(sqe)
+#' }
 stop_query_execution <- function(query_execution_id,
                                 aws_access_key_id = NULL,
                                 aws_secret_access_key = NULL,

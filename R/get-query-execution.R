@@ -12,6 +12,11 @@
 #' @param profile_name profile name
 #' @references <https://boto3.readthedocs.io/en/latest/reference/services/athena.html#Athena.Client.get_query_execution>
 #' @export
+#' @examples \dontrun{
+#' res <- list_query_executions()
+#'
+#' get_query_execution(res$QueryExecutionIds[1])
+#' }
 get_query_execution <- function(query_execution_id,
                                 aws_access_key_id = NULL,
                                 aws_secret_access_key = NULL,

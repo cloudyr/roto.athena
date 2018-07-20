@@ -30,6 +30,18 @@
 #' @note This retrieves _all_ the results (i.e. it handles pagination for you).
 #' @references <https://boto3.readthedocs.io/en/latest/reference/services/athena.html#Athena.Client.get_query_results>
 #' @export
+#' @examples \dontrun{
+#' start_query_execution(
+#'   query = "SELECT * FROM elb_logs LIMIT 100",
+#'   database = "sampledb",
+#'   output_location = "s3://aws-athena-query-results-redacted",
+#'   profile = "personal"
+#' ) -> sqe
+#'
+#' # wait a bit
+#'
+#' get_query_results(sqe)
+#' }
 get_query_results <- function(query_execution_id,
                               chunk_size = 1000L,
                               aws_access_key_id = NULL,

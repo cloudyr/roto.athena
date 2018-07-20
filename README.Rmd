@@ -8,15 +8,15 @@ knitr::opts_chunk$set(collapse = TRUE)
 ```
 # roto.athena
 
-Access Amazon's AWS Athena API
+Perform and Manage 'Amazon' 'Athena' Queries 
 
 ## Description
 
-Reticulated wrapper for the Python 'boto3' Athena client library.
-
+This is a 'reticulated' wrapper for the 'Python' 'boto3' 'AWS' 'Athena' client library <https://boto3.readthedocs.io/en/latest/reference/services/athena.html>. It requires 'Python' version 3.5+ and an 'AWS' account. Tools are also provided to execute 'dplyr' chains asynchronously.
+    
 ## NOTE
 
-This package **requires** Python >= 3.5 to be available and the `boto3` Python package.
+This package **requires** Python >= 3.5 to be available and the `boto3` Python module. The package author highly recommends setting `RETICULATE_PYTHON=/usr/local/bin/python3` in your `~/.Renviron` file to ensure R + `reticulate` will use the proper python version.
 
 ## What's Inside The Tin
 

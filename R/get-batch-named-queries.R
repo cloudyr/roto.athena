@@ -11,6 +11,11 @@
 #' @param profile_name profile name
 #' @references <https://boto3.readthedocs.io/en/latest/reference/services/athena.html#Athena.Client.batch_get_named_query>
 #' @export
+#' @examples \dontrun{
+#' res <- list_named_queries()
+#'
+#' get_named_queries(res$NamedQueryIds)
+#' }
 get_named_queries <- function(named_query_ids,
                               aws_access_key_id = NULL,
                               aws_secret_access_key = NULL,
