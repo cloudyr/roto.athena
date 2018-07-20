@@ -1,4 +1,4 @@
-Package: aws.athena
+Package: roto.athena
 Type: Package
 Title: Access Amazon's AWS Athena API
 Version: 0.1.0
@@ -9,8 +9,8 @@ Authors@R: c(
   )
 Maintainer: Bob Rudis <bob@rud.is>
 Description: Reticulated wrapper for the Python 'boto3' Athena client library.
-URL: https://github.com/hrbrmstr/aws.athena
-BugReports: https://github.com/hrbrmstr/aws.athena/issues
+URL: https://github.com/hrbrmstr/roto.athena
+BugReports: https://github.com/hrbrmstr/roto.athena/issues
 Encoding: UTF-8
 License: AGPL
 Suggests:

@@ -1,5 +1,5 @@
 
-# aws.athena
+# roto.athena
 
 Access Amazon’s AWS Athena API
 
@@ -31,13 +31,13 @@ The following functions are implemented:
 ## Installation
 
 ``` r
-devtools::install_github("hrbrmstr/aws.athena")
+devtools::install_github("hrbrmstr/roto.athena")
 ```
 
 ## Usage
 
 ``` r
-library(aws.athena)
+library(roto.athena)
 library(tidyverse)
 
 # current verison

@@ -1,2 +1,2 @@
 library(testthat)
-test_check("aws.athena")
+test_check("roto.athena")

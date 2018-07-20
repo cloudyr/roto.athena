@@ -4,7 +4,7 @@ output: rmarkdown::github_document
 ```{r include=FALSE}
 knitr::opts_chunk$set(collapse = TRUE)
 ```
-# aws.athena
+# roto.athena
 
 Access Amazon's AWS Athena API
 
@@ -35,7 +35,7 @@ The following functions are implemented:
 ## Installation
 
 ```{r eval=FALSE}
-devtools::install_github("hrbrmstr/aws.athena")
+devtools::install_github("hrbrmstr/roto.athena")
 ```
 
 ```{r message=FALSE, warning=FALSE, error=FALSE, include=FALSE}
@@ -45,7 +45,7 @@ options(width=120)
 ## Usage
 
 ```{r message=FALSE, warning=FALSE, error=FALSE}
-library(aws.athena)
+library(roto.athena)
 library(tidyverse)
 
 # current verison
