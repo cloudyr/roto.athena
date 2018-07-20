@@ -27,3 +27,6 @@ request was truncated.}
 \description{
 Provides a list of all available query IDs.
 }
+\references{
+\url{https://boto3.readthedocs.io/en/latest/reference/services/athena.html#Athena.Client.list_named_queries}
+}

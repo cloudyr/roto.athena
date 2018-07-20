@@ -10,6 +10,7 @@
 #' @param aws_session_token AWS session token
 #' @param region_name region name
 #' @param profile_name profile name
+#' @references <https://boto3.readthedocs.io/en/latest/reference/services/athena.html#Athena.Client.get_query_execution>
 #' @export
 get_query_execution <- function(query_execution_id,
                                 aws_access_key_id = NULL,
@@ -17,6 +18,11 @@ get_query_execution <- function(query_execution_id,
                                 aws_session_token = NULL,
                                 region_name = NULL,
                                 profile_name = NULL) {
+
+  if (length(query_execution_ids) > 50) {
+    message("Limiting query execution ids to 50")
+    query_execution_ids <- query_execution_ids[1:50]
+  }
 
   boto3$session$Session(
     aws_access_key_id = aws_access_key_id,
@@ -33,13 +39,13 @@ get_query_execution <- function(query_execution_id,
   ) -> res
 
   data.frame(
-    query_execution_id = res$QueryExecution$QueryExecutionId,
-    query = res$QueryExecution$Query,
+    query_execution_id = res$QueryExecution$QueryExecutionId %||% NA_character_,
+    query = res$QueryExecution$Query %||% NA_character_,
     output_location = res$QueryExecution$ResultConfiguration$OutputLocation %||% NA_character_,
     encryption_configuration = res$QueryExecution$ResultConfiguration$EncryptionOption %||% NA_character_,
     kms_key = res$QueryExecution$ResultConfiguration$KmsKey %||% NA_character_,
-    database = res$QueryExecution$QueryExecutionContext$Database,
-    state = res$QueryExecution$Status$State,
+    database = res$QueryExecution$QueryExecutionContext$Database %||% NA_character_,
+    state = res$QueryExecution$Status$State %||% NA_character_,
     state_change_reason = res$QueryExecution$StateChangeReason %||% NA_character_,
     submitted = as.character(res$QueryExecution$Status$SubmissionDateTime) %||% NA_character_,
     completed = as.character(res$QueryExecution$Status$CompletionDateTime) %||% NA_character_,

@@ -9,6 +9,7 @@
 #' @param aws_session_token AWS session token
 #' @param region_name region name
 #' @param profile_name profile name
+#' @references <https://boto3.readthedocs.io/en/latest/reference/services/athena.html#Athena.Client.stop_query_execution>
 #' @export
 stop_query_execution <- function(query_execution_id,
                                 aws_access_key_id = NULL,

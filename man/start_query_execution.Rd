@@ -43,3 +43,6 @@ Default is \code{NULL} (no encryption)}
 \description{
 Runs (executes) the SQL query statements contained in the \code{query} string.
 }
+\references{
+\url{https://boto3.readthedocs.io/en/latest/reference/services/athena.html#Athena.Client.start_query_execution}
+}

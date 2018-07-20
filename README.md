@@ -16,8 +16,12 @@ Python package.
 
 The following functions are implemented:
 
+  - `create_named_query`: Create a named query.
+  - `delete_named_query`: Delete a named query.
   - `get_named_query`: Get Query Execution
+  - `get_named_queries`: Get Query Execution (batch/multiple)
   - `get_query_execution`: Get Query Execution
+  - `get_query_executions`: Get Query Executions (batch/multiple)
   - `list_named_queries`: List Named Queries
   - `list_query_executions`: List Query Executions
   - `start_query_execution`: Start Query Execution

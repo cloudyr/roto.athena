@@ -3,12 +3,13 @@
 #' Returns information about a single query.
 #'
 #' @md
-#' @param named_query_id unique ID of the query execution.
+#' @param named_query_id unique ID of the named query
 #' @param aws_access_key_id AWS access key id
 #' @param aws_secret_access_key AWS secret access key
 #' @param aws_session_token AWS session token
 #' @param region_name region name
 #' @param profile_name profile name
+#' @references <https://boto3.readthedocs.io/en/latest/reference/services/athena.html#Athena.Client.get_named_query>
 #' @export
 get_named_query <- function(named_query_id,
                             aws_access_key_id = NULL,

@@ -25,3 +25,6 @@ get_query_execution(query_execution_id, aws_access_key_id = NULL,
 Returns information about a single execution of a query. Each time a query
 executes, information about the query execution is saved with a unique ID.
 }
+\references{
+\url{https://boto3.readthedocs.io/en/latest/reference/services/athena.html#Athena.Client.get_query_execution}
+}

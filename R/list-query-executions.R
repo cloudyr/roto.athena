@@ -11,6 +11,7 @@
 #' @param aws_session_token AWS session token
 #' @param region_name region name
 #' @param profile_name profile name
+#' @references <https://boto3.readthedocs.io/en/latest/reference/services/athena.html#Athena.Client.list_query_executions>
 #' @export
 list_query_executions <- function(max_results = 50L,
                                   next_token = NULL,
