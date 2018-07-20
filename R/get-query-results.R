@@ -93,10 +93,10 @@ get_query_results <- function(query_execution_id,
 
   for (i in 1:length(col_info)) {
     col_name <- col_info[[i]]$Name
-    col_type <- col_info[[i]]$Type
-    if (col_type == "integer") {
+    col_type <- tolower(col_info[[i]]$Type)
+    if (col_type %in% c("integer", "tinyint", "smallint", "int")) {
       out[,col_name] <- as.integer(out[[col_name]])
-    } else if (col_type == "double") {
+    } else if (col_type %in% c("double", "float")) {
       out[,col_name] <- as.double(out[[col_name]])
     } else if (col_type == "bigint") {
       out[,col_name] <- bit64::as.integer64(out[[col_name]])
