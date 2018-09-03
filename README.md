@@ -43,7 +43,7 @@ library(roto.athena)
 library(tidyverse)
 
 # current verison
-packageVersion("aws.athena")
+packageVersion("roto.athena")
 ## [1] '0.1.0'
 ```
 
