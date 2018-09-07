@@ -33,17 +33,19 @@
 #' @param checktime whether to check for time
 #' @return the filename
 #' @references <https://boto3.readthedocs.io/en/latest/reference/services/athena.html#Athena.Client.get_query_results>
-#' @importFrom future future
-#' @importFrom future resolved
-#' @importFrom future value
+#'
 #' @export
 #' @examples \dontrun{
 #' execute_and_save_query(
-#'   query = "SELECT * FROM elb_logs LIMIT 100",
+#'   query    = "SELECT * FROM elb_logs LIMIT 100",
 #'   database = "sampledb",
+#'   profile  = "personal",
 #'   output_location = "s3://aws-athena-query-results-redacted",
-#'   profile = "personal"
-#' )
+#'   local_filename = "download-to-here.csv",
+#'   polling_duration = 15,
+#'   checktime=FALSE,
+#'   maxtime=1000
+#'   )
 #' }
 #'
 #'
@@ -120,11 +122,7 @@ execute_and_save_query <- function(query,
     if (checktime==TRUE && abs(as.numeric(duration, units="mins"))  > maxtime ) {
       stop("Query has exceeded the maximum specified time")
     }
-
   }
-
-  print(paste("Query retrieval time (min): ",
-              abs(as.numeric(Sys.time() - inittime, units="mins"))))
 
   if (exists("s3obj")) {
     print(paste("downloading athena results file", s3path))
@@ -132,37 +130,5 @@ execute_and_save_query <- function(query,
   }
 
   local_filename
-
-  # localfile   <- save_query_results(
-  #   query_execution_id = executionid,
-  #   filename = local_filename,
-  #   aws_access_key_id = aws_access_key_id,
-  #   aws_secret_access_key = aws_secret_access_key,
-  #   aws_session_token = aws_session_token,
-  #   region_name = region_name,
-  #   profile_name = profile_name
-  # )
-  #
-  # future()
-  # region_name
-  #
-  # print("Initializing retrieval of Athena Query.")
-  # inittime <- Sys.time()
-  #
-  # while(!resolved(localfile)) {
-  #   Sys.sleep(polling_duration)
-  #   duration <- Sys.time() - inittime
-  #   print(duration)
-  #
-  #   if (checktime==TRUE && abs(as.numeric(duration, units="mins"))  > maxtime ) {
-  #     stop("Query has exceeded the maximum specified time")
-  #   }
-  # }
-  #
-  # print(paste("Query retrieval time (min): ",
-  #             abs(as.numeric(Sys.time() - inittime, units="mins"))))
-  #
-  # value(localfile)
-
 }
 

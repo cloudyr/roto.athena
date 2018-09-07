@@ -3,6 +3,7 @@
 export(collect_async)
 export(create_named_query)
 export(delete_named_query)
+export(execute_and_save_query)
 export(get_named_queries)
 export(get_named_query)
 export(get_query_execution)
