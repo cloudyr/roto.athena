@@ -109,11 +109,11 @@ execute_and_save_query <- function(query,
   print("Initializing retrieval of Athena Query.")
   inittime <- Sys.time()
 
-  while(!exists('s3obj')) {
+  s3obj <- NULL
+  while(is.null(s3obj)) {
 
     # use existence of the download object as the trigger
-    suppressWarnings(
-      try(s3obj <- s3$head_object(Bucket=bucket, Key=s3key)))
+    s3obj <- tryCatch(s3$head_object(Bucket=bucket, Key=s3key), error = function(e) NULL)
 
     Sys.sleep(polling_duration)
     duration <- Sys.time() - inittime
@@ -124,7 +124,7 @@ execute_and_save_query <- function(query,
     }
   }
 
-  if (exists("s3obj")) {
+  if (!is.null(s3obj)) {
     print(paste("downloading athena results file", s3path))
     s3$download_file(Bucket = bucket, Key = s3key , Filename = local_filename)
   }
